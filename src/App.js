@@ -43,11 +43,71 @@ function App() {
       corSecundaria: '#FFEEDF'
     }
   ];
-
-  const [colaboradores, setColaboradores] = useState([]);
+  const colaboradoresMock = [
+    {
+      nome: 'Pedro Henrique',
+      cargo: 'Desenvolvedor Fullstack',
+      imagem: 'https://github.com/PedroHPAlmeida.png',
+      time: times[0].nome
+    },
+    {
+      nome: 'Thyago Lobato',
+      cargo: 'Desenvolvedor Back-end',
+      imagem: 'https://github.com/T-Lobato.png',
+      time: times[0].nome
+    },
+    {
+      nome: 'Lucas Nunes',
+      cargo: 'Cientista de Dados',
+      imagem: 'https://github.com/lucasnunes146.png',
+      time: times[0].nome
+    },
+    {
+      nome: 'Pedro Henrique',
+      cargo: 'Desenvolvedor Fullstack',
+      imagem: 'https://github.com/PedroHPAlmeida.png',
+      time: times[1].nome
+    },
+    {
+      nome: 'Thyago Lobato',
+      cargo: 'Desenvolvedor Back-end',
+      imagem: 'https://github.com/T-Lobato.png',
+      time: times[1].nome
+    },
+    {
+      nome: 'Lucas Nunes',
+      cargo: 'Cientista de Dados',
+      imagem: 'https://github.com/lucasnunes146.png',
+      time: times[1].nome
+    },
+    {
+      nome: 'Pedro Henrique',
+      cargo: 'Desenvolvedor Fullstack',
+      imagem: 'https://github.com/PedroHPAlmeida.png',
+      time: times[2].nome
+    },
+    {
+      nome: 'Thyago Lobato',
+      cargo: 'Desenvolvedor Back-end',
+      imagem: 'https://github.com/T-Lobato.png',
+      time: times[2].nome
+    },
+    {
+      nome: 'Lucas Nunes',
+      cargo: 'Cientista de Dados',
+      imagem: 'https://github.com/lucasnunes146.png',
+      time: times[2].nome
+    },
+  ]
+  const [colaboradores, setColaboradores] = useState(colaboradoresMock);
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
     setColaboradores([...colaboradores, colaborador]);
+  }
+
+  const deletarColaborador = (colaborador) =>  {
+    console.log([...colaboradores.filter(c => c !== colaborador)])
+    setColaboradores([...colaboradores.filter(c => c !== colaborador)])
   }
 
   return (
@@ -65,6 +125,7 @@ function App() {
           corPrimaria={time.corPrimaria}
           corSecundaria={time.corSecundaria}
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+          aoDeletar={deletarColaborador}
         />)}
         <Rodape/>
     </div>
