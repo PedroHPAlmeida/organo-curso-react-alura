@@ -50,63 +50,72 @@ function App() {
       nome: 'Pedro Henrique',
       cargo: 'Desenvolvedor Fullstack',
       imagem: 'https://github.com/PedroHPAlmeida.png',
-      time: times[0].nome
+      time: times[0].nome,
+      favorito: false,
     },
     {
       id: uuidv4(),
       nome: 'Thyago Lobato',
       cargo: 'Desenvolvedor Back-end',
       imagem: 'https://github.com/T-Lobato.png',
-      time: times[0].nome
+      time: times[0].nome,
+      favorito: false,
     },
     {
       id: uuidv4(),
       nome: 'Lucas Nunes',
       cargo: 'Cientista de Dados',
       imagem: 'https://github.com/lucasnunes146.png',
-      time: times[0].nome
+      time: times[0].nome,
+      favorito: false,
     },
     {
       id: uuidv4(),
       nome: 'Pedro Henrique',
       cargo: 'Desenvolvedor Fullstack',
       imagem: 'https://github.com/PedroHPAlmeida.png',
-      time: times[1].nome
+      time: times[1].nome,
+      favorito: false,
     },
     {
       id: uuidv4(),
       nome: 'Thyago Lobato',
       cargo: 'Desenvolvedor Back-end',
       imagem: 'https://github.com/T-Lobato.png',
-      time: times[1].nome
+      time: times[1].nome,
+      favorito: false,
     },
     {
       id: uuidv4(),
       nome: 'Lucas Nunes',
       cargo: 'Cientista de Dados',
       imagem: 'https://github.com/lucasnunes146.png',
-      time: times[1].nome
+      time: times[1].nome,
+      favorito: false,
     },
     {
       id: uuidv4(),
       nome: 'Pedro Henrique',
       cargo: 'Desenvolvedor Fullstack',
       imagem: 'https://github.com/PedroHPAlmeida.png',
-      time: times[2].nome
+      time: times[2].nome,
+      favorito: false,
     },
     {
       id: uuidv4(),
       nome: 'Thyago Lobato',
       cargo: 'Desenvolvedor Back-end',
       imagem: 'https://github.com/T-Lobato.png',
-      time: times[2].nome
+      time: times[2].nome,
+      favorito: false,
     },
     {
       id: uuidv4(),
       nome: 'Lucas Nunes',
       cargo: 'Cientista de Dados',
       imagem: 'https://github.com/lucasnunes146.png',
-      time: times[2].nome
+      time: times[2].nome,
+      favorito: false,
     },
   ]
   const [colaboradores, setColaboradores] = useState(colaboradoresMock);
@@ -117,6 +126,15 @@ function App() {
 
   const deletarColaborador = (colaborador) =>  {
     setColaboradores([...colaboradores.filter(c => c.id !== colaborador.id)])
+  }
+
+  const aoFavoritarColaborador = (colaborador) => {
+    setColaboradores(colaboradores.map(c => {
+      if (colaborador.id === c.id) {
+        c.favorito = !c.favorito
+      }
+      return c
+    }))
   }
 
   const aoTimeCadastrado = (time) => {
@@ -147,6 +165,7 @@ function App() {
           mudarCor={mudarCorDoTime}
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
           aoDeletar={deletarColaborador}
+          aoFavoritar={aoFavoritarColaborador}
         />)}
         <Rodape/>
     </div>

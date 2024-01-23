@@ -2,7 +2,7 @@ import Colaborador from '../Colaborador';
 import './Time.css';
 import hexRgb from 'hex-rgb';
 
-const Time = ({ time, mudarCor, colaboradores, aoDeletar }) => {
+const Time = ({ time, mudarCor, colaboradores, aoDeletar, aoFavoritar }) => {
     return (
         (colaboradores.length > 0) && 
         <section className='time' style={{ backgroundColor: hexRgb(time.cor, {alpha: 0.4, format: 'css'}) }}>
@@ -15,6 +15,7 @@ const Time = ({ time, mudarCor, colaboradores, aoDeletar }) => {
                         colaborador={colaborador}
                         corCard={time.cor}
                         aoDeletar={aoDeletar}
+                        aoFavoritar={aoFavoritar}
                     />)
                 })}
             </div>
