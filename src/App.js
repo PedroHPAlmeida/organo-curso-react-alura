@@ -112,11 +112,15 @@ function App() {
   const [colaboradores, setColaboradores] = useState(colaboradoresMock);
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    setColaboradores([...colaboradores, colaborador]);
+    setColaboradores([...colaboradores, {...colaborador, id: uuidv4()}]);
   }
 
   const deletarColaborador = (colaborador) =>  {
     setColaboradores([...colaboradores.filter(c => c.id !== colaborador.id)])
+  }
+
+  const aoTimeCadastrado = (time) => {
+    setTimes([...times, {...time, id: uuidv4()}])
   }
 
   const mudarCorDoTime = (cor, id) => {
@@ -133,9 +137,9 @@ function App() {
       <Banner/>
       <Formulario
         times={times.map(time => time.nome)}
-        aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)
-      }/>
-      
+        aoColaboradorCadastrado={aoNovoColaboradorAdicionado}
+        aoTimeCadastrado={aoTimeCadastrado}
+      />
       {times.map(time => 
         <Time
           key={time.nome}
