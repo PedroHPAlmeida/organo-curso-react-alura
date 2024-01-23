@@ -3,89 +3,106 @@ import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario';
 import Rodape from './componentes/Rodape';
 import Time from './componentes/Time';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
   const [times, setTimes] = useState([
     {
+      id: uuidv4(),
       nome: 'Programação',
       cor: '#57C278',
     },
     {
+      id: uuidv4(),
       nome: 'Front-End',
       cor: '#82CFFA',
     },
     {
+      id: uuidv4(),
       nome: 'Data Science',
       cor: '#A6D157',
     },
     {
+      id: uuidv4(),
       nome: 'DevOps',
       cor: '#E06B96',
     },
     {
+      id: uuidv4(),
       nome: 'UX e Design',
       cor: '#DB6EBF',
     },
     {
+      id: uuidv4(),
       nome: 'Mobile',
       cor: '#FFBA05',
     },
     {
+      id: uuidv4(),
       nome: 'Inovação e Gestão',
       cor: '#FF8A29',
     }
   ]);
   const colaboradoresMock = [
     {
+      id: uuidv4(),
       nome: 'Pedro Henrique',
       cargo: 'Desenvolvedor Fullstack',
       imagem: 'https://github.com/PedroHPAlmeida.png',
       time: times[0].nome
     },
     {
+      id: uuidv4(),
       nome: 'Thyago Lobato',
       cargo: 'Desenvolvedor Back-end',
       imagem: 'https://github.com/T-Lobato.png',
       time: times[0].nome
     },
     {
+      id: uuidv4(),
       nome: 'Lucas Nunes',
       cargo: 'Cientista de Dados',
       imagem: 'https://github.com/lucasnunes146.png',
       time: times[0].nome
     },
     {
+      id: uuidv4(),
       nome: 'Pedro Henrique',
       cargo: 'Desenvolvedor Fullstack',
       imagem: 'https://github.com/PedroHPAlmeida.png',
       time: times[1].nome
     },
     {
+      id: uuidv4(),
       nome: 'Thyago Lobato',
       cargo: 'Desenvolvedor Back-end',
       imagem: 'https://github.com/T-Lobato.png',
       time: times[1].nome
     },
     {
+      id: uuidv4(),
       nome: 'Lucas Nunes',
       cargo: 'Cientista de Dados',
       imagem: 'https://github.com/lucasnunes146.png',
       time: times[1].nome
     },
     {
+      id: uuidv4(),
       nome: 'Pedro Henrique',
       cargo: 'Desenvolvedor Fullstack',
       imagem: 'https://github.com/PedroHPAlmeida.png',
       time: times[2].nome
     },
     {
+      id: uuidv4(),
       nome: 'Thyago Lobato',
       cargo: 'Desenvolvedor Back-end',
       imagem: 'https://github.com/T-Lobato.png',
       time: times[2].nome
     },
     {
+      id: uuidv4(),
       nome: 'Lucas Nunes',
       cargo: 'Cientista de Dados',
       imagem: 'https://github.com/lucasnunes146.png',
@@ -99,13 +116,12 @@ function App() {
   }
 
   const deletarColaborador = (colaborador) =>  {
-    console.log([...colaboradores.filter(c => c !== colaborador)])
-    setColaboradores([...colaboradores.filter(c => c !== colaborador)])
+    setColaboradores([...colaboradores.filter(c => c.id !== colaborador.id)])
   }
 
-  const mudarCorDoTime = (cor, nome) => {
+  const mudarCorDoTime = (cor, id) => {
     setTimes(times.map(time => {
-      if(time.nome === nome) {
+      if(time.id === id) {
         time.cor = cor
       }
       return time
